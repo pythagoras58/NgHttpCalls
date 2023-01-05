@@ -37,8 +37,11 @@ export class UserService {
         address:`${user.location.street.number}  ${user.location.street.name} ${user.location.city}, ${user.location.country}`,
         dateOfBirth:user.dob.date,
         phone:user.phone,
-        imageUrl:string,
-        coordinate: CoordinateInterface;
+        imageUrl:user.picture.medium,
+        coordinate: {
+          latitude : +user.location.coordinate.latitude,
+          longitude : +user.location.coordinate.longitude
+        }
       }))
     };
   }
