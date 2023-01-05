@@ -1,6 +1,7 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {UserService} from "../../service/user.service";
 import {Subscription} from "rxjs";
+import {ResponseInterface} from "../../interfaces/Response.interface";
 
 @Component({
   selector: 'app-users',
@@ -11,12 +12,15 @@ export class UsersComponent implements OnInit, OnDestroy {
 
   usersSubscription : Subscription | undefined;
   userSubscription : Subscription | undefined;
+
+   response: ResponseInterface;
   constructor(private userService:UserService) { }
 
   ngOnInit(): void {
     this.usersSubscription =  this.userService.getUsers(15).subscribe(
       (res : any)=>{
-        console.log(res)
+        //console.log(res)
+        this.response = res;
       }
     );
   }

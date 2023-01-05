@@ -1,1 +1,8 @@
-<p class="text-bg-danger">users works!</p>
+<div class="card" *ngIf="response">
+  <div class="card-body">
+    <h5 class="text text-primary">Random User API</h5>
+    <p class="card-text">Seed : {{response.info.seed}}</p>
+    <p class="card-text">Result : {{response.info.result}}</p>
+    <p class="card-text">Version : {{response.info.version}}</p>
+  </div>
+</div>
