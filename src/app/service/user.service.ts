@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {ResponseInterface} from "../interfaces/Response.interface";
+import {UserInterface} from "../interfaces/user.interface";
+import {CoordinateInterface} from "../interfaces/Coordinate.interface";
 
 @Injectable({
   providedIn: 'root'
@@ -25,7 +27,19 @@ export class UserService {
   private processResponse(response:ResponseInterface):ResponseInterface{
     return {
       info:{...response.info},
-      results : response.results.map((users:any)=>{})
+      results : response.results.map((user:any)=>(<UserInterface>{
+        uuid:user.login.uuid,
+        firstName:user.name.firstName,
+        lastName:user.name.lastName,
+        email:user.email,
+        userName:user.login.userName,
+        gender:user.gender,
+        address:`${user.location.street.number}  ${user.location.street.name} ${user.location.city}, ${user.location.country}`,
+        dateOfBirth:user.dob.date,
+        phone:user.phone,
+        imageUrl:string,
+        coordinate: CoordinateInterface;
+      }))
     };
   }
 }
