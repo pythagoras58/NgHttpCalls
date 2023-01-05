@@ -1,3 +1,4 @@
+import {CoordinateInterface} from "./Coordinate.interface";
 
 export interface UserInterface {
     uuid:string;
@@ -10,7 +11,7 @@ export interface UserInterface {
     dateOfBirth:string;
     phone:string;
     imageUrl:string;
-    coordinate: Coordinate;
+    coordinate: CoordinateInterface;
 }
 
 
