@@ -33,8 +33,8 @@ export class UserService {
       info:{...response.info},
       results : response.results.map((user:any)=>(<UserInterface>{
         uuid:user.login.uuid,
-        firstName:user.name.firstName,
-        lastName:user.name.lastName,
+        firstName:user.name.first,
+        lastName:user.name.last,
         email:user.email,
         userName:user.login.userName,
         gender:user.gender,

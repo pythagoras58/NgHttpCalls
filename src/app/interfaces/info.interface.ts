@@ -1,6 +1,6 @@
 export interface InfoInterface {
   seed:string;
-  result: number;
+  results: number;
   page:number;
   version:string;
 }

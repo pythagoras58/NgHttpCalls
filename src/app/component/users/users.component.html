@@ -2,7 +2,7 @@
   <div class="card-body">
     <h5 class="text text-primary">Random User API</h5>
     <p class="card-text">Seed : {{response.info.seed}}</p>
-    <p class="card-text">Result : {{response.info.result}}</p>
+    <p class="card-text">Result : {{response.info.results}}</p>
     <p class="card-text">Version : {{response.info.version}}</p>
   </div>
 </div>
@@ -23,6 +23,17 @@
   </thead>
 
   <tbody>
-
+      <tr *ngFor="let user of response?.results; let i = index">
+        <td>{{user.uuid}}</td>
+        <td><img [src]="user.imageUrl" [alt]="user.firstName"/></td>
+        <td>{{user.firstName}} {{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.address}}</td>
+        <td>{{user.phone}}</td>
+        <td>
+          <button class="btn btn-outline-primary" [routerLink]="['/user', user.uuid]" type="button">View
+          </button>
+        </td>
+      </tr>
   </tbody>
 </table>
