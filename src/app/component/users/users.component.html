@@ -12,6 +12,7 @@
 <table class="table table-striped" *ngIf="response">
   <thead class="table-light">
       <tr>
+        <th scope="col">ID</th>
         <th scope="col">Image</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
@@ -23,6 +24,7 @@
 
   <tbody>
       <tr *ngFor="let user of response?.results; let i = index">
+        <td>{{user.uuid.substring(0,4)}}</td>
         <td><img [src]="user.imageUrl" [alt]="user.firstName" id="userImg"/></td>
         <td>{{user.firstName}} {{user.lastName}}</td>
         <td>{{user.email}}</td>
