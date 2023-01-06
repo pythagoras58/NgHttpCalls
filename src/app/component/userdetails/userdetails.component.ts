@@ -50,7 +50,16 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
   }
 
   private loadMap(coordinate : CoordinateInterface): void{
+    const map = Leaflet.map('map', {
+      center : [coordinate.latitude, coordinate.longitude],
+      zoom:8
+    });
 
+    const mainLayer = Leaflet.tileLayer('Tile URL', {
+      tileSize : 512,
+      zoomOffset : -1,
+      minZoom: 30
+    });
   }
 
 }
