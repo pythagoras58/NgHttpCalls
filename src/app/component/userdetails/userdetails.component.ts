@@ -2,8 +2,10 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, ParamMap} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {Subscription} from "rxjs";
+import * as Leaflet from 'leaflet';
 import {ResponseInterface} from "../../interfaces/Response.interface";
 import {UserInterface} from "../../interfaces/user.interface";
+import {CoordinateInterface} from "../../interfaces/Coordinate.interface";
 
 @Component({
   selector: 'app-userdetails',
@@ -47,6 +49,8 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
     }
   }
 
-  private
+  private loadMap(coordinate : CoordinateInterface): void{
+
+  }
 
 }
