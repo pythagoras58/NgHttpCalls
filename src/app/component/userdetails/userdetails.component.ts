@@ -58,7 +58,10 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
     const mainLayer = Leaflet.tileLayer('Tile URL', {
       tileSize : 512,
       zoomOffset : -1,
-      minZoom: 30
+      minZoom: 1,
+      maxZoom:30,
+      crossOrigin: true,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
   }
 
