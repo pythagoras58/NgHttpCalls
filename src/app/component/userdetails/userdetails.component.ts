@@ -3,6 +3,7 @@ import {ActivatedRoute, ParamMap} from "@angular/router";
 import {UserService} from "../../service/user.service";
 import {Subscription} from "rxjs";
 import {ResponseInterface} from "../../interfaces/Response.interface";
+import {UserInterface} from "../../interfaces/user.interface";
 
 @Component({
   selector: 'app-userdetails',
@@ -13,7 +14,8 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
 
   subscribedUserDetail : Subscription;
 
-  response : ResponseInterface;
+  //response : ResponseInterface;
+  user : UserInterface;
   mode : 'edit' | 'locked' = 'locked';
 
   buttonText : 'Save Changes' | 'Edit' = 'Edit';
@@ -21,17 +23,19 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
   constructor(private activateRoute: ActivatedRoute, private userService:UserService) { }
 
   ngOnInit(): void {
-    this.subscribedUserDetail = this.activateRoute.paramMap.subscribe((params : ParamMap)=>{
-      this.userService.getUser(params.get('uuid')!).subscribe(
-        (res : any)=>{
-          this.response = res;
-        }
-      )
-    })
+    this.user = (<UserInterface>(this.activateRoute.snapshot.data['resolvedResponse'].results[0]));
+    // this.subscribedUserDetail = this.activateRoute.paramMap.subscribe((params : ParamMap)=>{
+    //   this.userService.getUser(params.get('uuid')!).subscribe(
+    //     (res : any)=>{
+    //       this.response = res;
+    //     }
+    //   )
+    // })
+
   }
 
   ngOnDestroy(): void {
-    this.subscribedUserDetail.unsubscribe();
+    //this.subscribedUserDetail.unsubscribe();
   }
 
   changeMode(mode?: 'edit' | 'locked'):void{
@@ -42,5 +46,7 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
       console.log('Updating user');
     }
   }
+
+  private
 
 }
