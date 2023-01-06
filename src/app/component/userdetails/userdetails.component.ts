@@ -14,6 +14,9 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
   subscribedUserDetail : Subscription;
 
   response : ResponseInterface;
+  mode : 'edit' | 'locked' = 'locked';
+
+  buttonText : 'Save Changes' | 'Edit' = 'Edit';
 
   constructor(private activateRoute: ActivatedRoute, private userService:UserService) { }
 
@@ -31,8 +34,13 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
     this.subscribedUserDetail.unsubscribe();
   }
 
-  changeMode():void{
+  changeMode(mode?: 'edit' | 'locked'):void{
+    this.mode = this.mode === 'locked' ? 'edit' : 'locked';
+    this.buttonText = this.buttonText === 'Edit' ? 'Save Changes' : 'Edit';
 
+    if(mode === 'edit'){
+      console.log('Updating user');
+    }
   }
 
 }
