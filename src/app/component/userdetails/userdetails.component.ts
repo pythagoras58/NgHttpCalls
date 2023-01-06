@@ -33,7 +33,7 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
     //     }
     //   )
     // })
-
+    this.loadMap(this.user.coordinate)
   }
 
   ngOnDestroy(): void {
@@ -55,7 +55,7 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
       zoom:8
     });
 
-    const mainLayer = Leaflet.tileLayer('Tile URL', {
+    const mainLayer = Leaflet.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       tileSize : 512,
       zoomOffset : -1,
       minZoom: 1,
@@ -66,7 +66,7 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
 
     mainLayer.addTo(map);
 
-
+    //const marker = Leaflet.marker([coordinate.latitude, coordinate.longitude], {icon: this.ma})
   }
 
 }
