@@ -21,7 +21,7 @@ export class UserService {
     );
   }
   // FETCH USER BY UUID
-  getUser(uuid : number = 1):Observable<any>{
+  getUser(uuid : string):Observable<any>{
     return this.http.get<any>(`${this.apiUrl}/?uuid=${uuid}`).pipe(
       map(res=>this.processResponse(res))
     );

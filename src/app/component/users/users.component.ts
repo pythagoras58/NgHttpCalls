@@ -10,8 +10,7 @@ import {ResponseInterface} from "../../interfaces/Response.interface";
 })
 export class UsersComponent implements OnInit, OnDestroy {
 
-  usersSubscription : Subscription | undefined;
-  userSubscription : Subscription | undefined;
+  usersSubscription : Subscription;
 
    response: ResponseInterface;
   constructor(private userService:UserService) { }
