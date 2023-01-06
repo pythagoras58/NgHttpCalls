@@ -63,6 +63,10 @@ export class UserdetailsComponent implements OnInit, OnDestroy {
       crossOrigin: true,
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
     });
+
+    mainLayer.addTo(map);
+
+
   }
 
 }
